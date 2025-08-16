@@ -1,0 +1,7 @@
+[project]
+name = "arcsync"
+version = "0.1.0"
+dependencies = ["click", "pyyaml"]
+
+[project.scripts]
+arcsync = "arcsync.cli:cli"
