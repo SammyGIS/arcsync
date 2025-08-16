@@ -1,5 +1,6 @@
 import time
 import os
+import yaml
 from arcgis.gis import GIS
 from arcgis.features import FeatureLayerCollection
 from config.constants import (
@@ -59,7 +60,7 @@ class ArcGISService:
         """Create a new folder in ArcGIS content if name is provided."""
         if folder_name:
             self.folder = self.gis.content.create_folder(folder=folder_name)
-            print(f"[✔] Folder created: {self.folder['title']}")
+            print(f"Folder created: {self.folder['title']}")
 
     def create_feature_service(self, service_name: str = None):
         """
@@ -102,7 +103,7 @@ class ArcGISService:
             item_properties=item_properties,
             folder=self.folder['title'] if self.folder else None
         )
-        print(f"[✔] Feature service created: {self.service_item.title}")
+        print(f"Feature service created: {self.service_item.title}")
 
     def add_point_layer(self, fields: list = None):
         """Add an empty point layer to the created feature service."""
@@ -144,7 +145,7 @@ class ArcGISService:
         fl_collection = FeatureLayerCollection.fromitem(self.service_item)
         fl_collection.manager.add_to_definition(layer_definition)
         self.layer = fl_collection.layers[0]
-        print(f"[✔] Point layer added: {self.layer.properties.name}")
+        print(f"Point layer added: {self.layer.properties.name}")
 
     def run_all(self, folder_name=None, service_name=None, fields=None):
         """

@@ -1,4 +1,6 @@
-# 🛰️ ArcGIS ETL Pipeline
+# 🛰️ ArcSync
+ArcSync – Seamless ETL for ArcGIS Online:
+Synchronize, Transform, Load the ArcGIS way
 
 This project provides a modular ETL (Extract, Transform, Load) pipeline to process geospatial or tabular data and load it into an **ArcGIS Online Hosted Feature Layer**.
 

@@ -18,8 +18,6 @@ source:
   googlesheet:
     endpoint:
 
-  
-
 arcgis:
   username: "your_agol_user"
   password: "your_agol_password"
