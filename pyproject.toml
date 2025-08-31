@@ -1,7 +1,20 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "arcsync"
 version = "0.1.0"
-dependencies = ["click", "pyyaml"]
+description = "Sync data from CSV/Postgres/Google Sheets to ArcGIS Online with simple CDC and YAML config."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{name="Ajeyomi", email="you@example.com"}]
+license = {text = "MIT"}
+dependencies = [
+  "PyYAML>=6.0.1",
+  "pandas>=2.0.0",
+  # Postgres + GSheet are optional at runtime; imported lazily
+]
 
 [project.scripts]
-arcsync = "arcsync.cli:cli"
+arcsync = "arcsync.cli:main"
