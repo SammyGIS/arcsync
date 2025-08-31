@@ -112,35 +112,38 @@ class ArcGISService:
 
         layer_fields = self._prepare_layer_fields(fields)
 
-        layer_definition = {
-            "layers": [{
-                "id": 0,
-                "name": "DIY_Layer",
-                "type": "Feature Layer",
-                "displayField": "fullname",
-                "description": "DIY point layer",
-                "geometryType": "esriGeometryPoint",
-                "extent": EXTENT,
-                "spatialReference": {"wkid": 4326},
-                "fields": layer_fields,
-                "drawingInfo": {
-                    "renderer": {
-                        "type": "simple",
-                        "symbol": {
-                            "type": "esriSMS",
-                            "style": "esriSMSCircle",
-                            "color": [0, 112, 255, 255],
-                            "size": 8,
-                            "outline": {
-                                "color": [255, 255, 255, 255],
-                                "width": 1
+        try:
+            layer_definition = {
+                "layers": [{
+                    "id": 0,
+                    "name": "DIY_Layer",
+                    "type": "Feature Layer",
+                    "displayField": "fullname",
+                    "description": "DIY point layer",
+                    "geometryType": "esriGeometryPoint",
+                    "extent": EXTENT,
+                    "spatialReference": {"wkid": 4326},
+                    "fields": layer_fields,
+                    "drawingInfo": {
+                        "renderer": {
+                            "type": "simple",
+                            "symbol": {
+                                "type": "esriSMS",
+                                "style": "esriSMSCircle",
+                                "color": [0, 112, 255, 255],
+                                "size": 8,
+                                "outline": {
+                                    "color": [255, 255, 255, 255],
+                                    "width": 1
+                                }
                             }
                         }
-                    }
-                },
-                "capabilities": DEFAULT_CAPABILITIES
-            }]
-        }
+                    },
+                    "capabilities": DEFAULT_CAPABILITIES
+                }]
+            }
+        except Exception as e:
+            raise RuntimeError(e)
 
         fl_collection = FeatureLayerCollection.fromitem(self.service_item)
         fl_collection.manager.add_to_definition(layer_definition)
